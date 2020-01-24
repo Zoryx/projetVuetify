@@ -30,7 +30,9 @@
                     <span class="mr-2">goBackHome</span>
                 </v-btn>
             </div>
-
+            <v-btn class ="ma-2" tile large color="teal" @click="Formulaire" icon>
+                <v-icon>mdi-vuetify</v-icon>
+            </v-btn>
             <v-spacer></v-spacer>
 
             <v-btn
@@ -78,13 +80,9 @@ export default {
             this.goBackHomeVue = true
         },
 
-        // SlideTVueFonction(){
-        //     if (this.SlideTVue){
-        //         this.SlideTVue = false;
-        //     } else {
-                
-        //     }
-        // },
+        Formulaire(){
+            this.$router.push({name:'formulaire'})
+        },
         goBackHome(){
             this.$router.push({name:'home'})
             this.SlideTVue = true

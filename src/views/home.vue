@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Scroll id="scroll" ref="scroll" widthWrapper="800px" heightWrapper="400px" v-show="pasSecondScroll">
+        <Scroll id="scroll" ref="scroll" widthWrapper="800px" heightWrapper="400px">
             <div>
                 <HelloWorld/>
                 <div>
@@ -193,7 +193,6 @@ export default {
     timeout:2000,
     multiLine:true,
     showDiv: false,
-    pasSecondScroll:true,
     componentKey: 0,
     colors: [
           'indigo',

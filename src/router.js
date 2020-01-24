@@ -21,7 +21,14 @@ export default new Router({
                     path: 'SlideTesT',
                     name: 'SlideTesT',
                     component: () => import('./views/SlideTesT.vue'),
-                    props:true
+                    props:true,
+                    
+                },
+                {
+                    path: 'formulaire',
+                    name: 'formulaire',
+                    component: () => import('./views/formulaire.vue'),
+                    props:true,
                 }
             ]
         }
