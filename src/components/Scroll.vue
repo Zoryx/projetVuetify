@@ -1,8 +1,8 @@
 <template>
   <div class="free-scroll-container">
-    <div class="free-scroll-wrapper">
+    <div class="free-scroll-wrapper" v-bind:style="{height:heightWrapper, width:widthWrapper}">
       <div class="scroll-wrapper" ref="wrapper">
-        <div class="scroll-content" v-bind:style="{height:heightTest, width:widthTest}" >
+        <div id="test" class="scroll-content">
           <slot>
             <p>ContenuScrollable Test</p>
           </slot>
@@ -15,6 +15,8 @@
 <script>
 import BScroll from '@better-scroll/core';
 import ScrollBar from '@better-scroll/scroll-bar';
+/* MutationObserver */
+
 
 BScroll.use(ScrollBar)
 
@@ -23,14 +25,15 @@ BScroll.use(ScrollBar)
     mounted() {
       this.init()
     },
-    created(){
-      this.bs = null  
-    }, 
     props:{
         footerboolean : {type:Boolean,default:false},
-        heightTest :{type: String, default: "100%"},
-        widthTest  :{type: String, default: "100%"}
+        heightWrapper:{type: String, default:"330px"},
+        widthWrapper:{type: String, default:"660px"},
     },
+    updated(){
+      this.bs.refresh();
+    },
+
     methods: {
       init () {
         this.bs = new BScroll(this.$refs.wrapper, {
@@ -49,6 +52,10 @@ BScroll.use(ScrollBar)
             fade:false,
           }
         })
+
+        this.$nextTick(() => {
+          this.bs.refresh()
+        })
       },
       refreshScrollVue(){
         this.bs.refresh();
@@ -66,10 +73,6 @@ BScroll.use(ScrollBar)
     
   .free-scroll-wrapper{
     position: relative;
-    width: 660px;
-    height:330px;
-    border: 1px solid rgb(96, 108, 113);
-    box-sizing: border-box;
   }
       
   .scroll-wrapper{
@@ -79,10 +82,6 @@ BScroll.use(ScrollBar)
     right: 0;
     bottom: 0;
     overflow: hidden;
-  }
-        
-  .scroll-content{
-    background-color: #efeff4;
   }
   
   p{

@@ -14,7 +14,7 @@
           </slot>
       </header>
       <section id="bodytest" class="modal-body">
-        <Scroll ref="scroll" widthTest="" heightTest="">
+        <Scroll ref="scroll">
           <slot>
             I'm the default body
           </slot>
@@ -46,13 +46,14 @@ import Scroll from './Scroll.vue';
 
     props:{
         footerboolean : {type:Boolean,default:false},
-        heightTest :{type: String, default: "100%"},
-        widthTest  :{type: String, default: "100%"}
+        heightWrapper:{type: String, default:"330px"},
+        widthWrapper:{type: String, default:"660px"},
     },
     methods: {
       close() {
         this.$emit('close');
       },
+      
       refreshScroll(){
         this.$refs.scroll.refreshScrollVue();
       },
